@@ -6,7 +6,7 @@ import (
 	"github.com/jaswdr/faker/v2"
 )
 
-type DatetimeMother struct{
+type DatetimeMother struct {
 	f *faker.Faker
 }
 

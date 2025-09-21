@@ -32,7 +32,7 @@ func (h MyCommandHandler) SubscribedTo() commandbus.Command {
 	return HandledCommand{}
 }
 
-func (h MyCommandHandler) Handle(ctx  context.Context, command commandbus.Command) error {
+func (h MyCommandHandler) Handle(ctx context.Context, command commandbus.Command) error {
 	return nil
 }
 
@@ -58,7 +58,7 @@ func TestInMemoryCommandBus(t *testing.T) {
 
 		err := commandBus.Dispatch(ctx, unhandledCommand)
 		if err != err.(commandbus.CommandNotRegisteredError) {
-				t.Errorf("Expected %v, got %v", err.(commandbus.CommandNotRegisteredError), err)
+			t.Errorf("Expected %v, got %v", err.(commandbus.CommandNotRegisteredError), err)
 		}
 	})
 

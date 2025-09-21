@@ -24,10 +24,9 @@ func (h *MyQueryHandler) SubscribedTo() querybus.Query {
 	return HandledQuery{}
 }
 
-type MyResponse struct{
+type MyResponse struct {
 	data any
 }
-
 
 func (h *MyQueryHandler) Handle(ctx context.Context, query querybus.Query) (querybus.Response, error) {
 	return MyResponse{data: "data"}, nil
