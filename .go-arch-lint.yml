@@ -1,0 +1,41 @@
+version: 3
+workdir: internal/contexts
+allow:
+  ignoreNotFoundComponents: true
+
+excludeFiles:
+  - "^.*_mother\\.go$"
+  - "^.*_test\\.go$"
+  - "^.*\/test\/.*$"
+
+vendors:
+  google-uuid: { in: github.com/google/uuid }
+
+components:
+  domain:
+    in: "**/domain/**"
+  application:
+    in: "**/application/**"
+  infrastructure:
+    in: "**/infrastructure/**"
+  shared:
+    in: "shared/**"
+
+commonComponents:
+  - shared
+
+deps:
+  application:
+    mayDependOn:
+      - domain
+      - shared
+  domain:
+    mayDependOn:
+      - shared
+    canUse:
+      - google-uuid
+  infrastructure:
+    mayDependOn:
+      - domain
+      - application
+      - shared
