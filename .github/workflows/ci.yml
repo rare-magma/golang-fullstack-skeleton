@@ -43,3 +43,6 @@ jobs:
 
     - name: Run go-arch-lint
       run: go-arch-lint check
+
+    - name: Test
+      run: go test ./...
