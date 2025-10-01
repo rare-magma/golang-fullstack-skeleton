@@ -14,35 +14,35 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-go@v5
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # ratchet:actions/checkout@v4
+      - uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # ratchet:actions/setup-go@v5
 
-    - name: Go Format
-      run: gofmt -s -w . && git diff --exit-code
+      - name: Go Format
+        run: gofmt -s -w . && git diff --exit-code
 
-    - name: Go Vet
-      run: go vet ./...
+      - name: Go Vet
+        run: go vet ./...
 
-    - name: Go Tidy
-      run: go mod tidy && git diff --exit-code
+      - name: Go Tidy
+        run: go mod tidy && git diff --exit-code
 
-    - name: Go Mod
-      run: go mod download
+      - name: Go Mod
+        run: go mod download
 
-    - name: Go Mod Verify
-      run: go mod verify
+      - name: Go Mod Verify
+        run: go mod verify
 
-    - name: Install govulncheck
-      run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - name: Install govulncheck
+        run: go install golang.org/x/vuln/cmd/govulncheck@latest
 
-    - name: Run govulncheck
-      run: govulncheck
+      - name: Run govulncheck
+        run: govulncheck
 
-    - name: Install go-arch-lint
-      run: go install github.com/fe3dback/go-arch-lint@latest
+      - name: Install go-arch-lint
+        run: go install github.com/fe3dback/go-arch-lint@latest
 
-    - name: Run go-arch-lint
-      run: go-arch-lint check
+      - name: Run go-arch-lint
+        run: go-arch-lint check
 
-    - name: Test
-      run: go test ./...
+      - name: Test
+        run: go test ./...
