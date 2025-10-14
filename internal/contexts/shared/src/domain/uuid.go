@@ -18,7 +18,7 @@ func NewUuid(value string) (*Uuid, error) {
 		return nil, NewInvalidArgument(fmt.Sprintf("<%T> does not allow the value <%s>", Uuid{}, value))
 	}
 
-	vo := NewValueObject[string](value)
+	vo := NewValueObject(value)
 	return &Uuid{*vo}, nil
 }
 
